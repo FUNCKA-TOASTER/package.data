@@ -22,8 +22,8 @@ from toaster_utils.enums import (
     UserPermission,
     SettingDestination,
     SettingStatus,
-    UrlStatus,
-    UrlType,
+    LinkStatus,
+    LinkType,
     StaffRole,
 )
 from .annotations import UUID, BPID
@@ -175,9 +175,9 @@ class Link(BaseModel):
     __tablename__ = "links"
 
     bpid: Mapped[BPID]
-    type: Mapped[UrlType] = mapped_column(primary_key=True)
+    type: Mapped[LinkType] = mapped_column(primary_key=True)
     pattern: Mapped[str] = mapped_column(VARCHAR(255), primary_key=True)
-    status: Mapped[UrlStatus]
+    status: Mapped[LinkStatus]
 
 
 class Staff(BaseModel):
