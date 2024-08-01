@@ -10,8 +10,8 @@ About:
 from .enums import (
     PeerMark,
     UserPermission,
-    UrlStatus,
-    UrlType,
+    LinkStatus,
+    LinkType,
     SettingDestination,
     SettingStatus,
     StaffRole,
@@ -21,8 +21,8 @@ from .enums import (
 __all__ = (
     "PeerMark",
     "UserPermission",
-    "UrlStatus",
-    "UrlType",
+    "LinkStatus",
+    "LinkType",
     "SettingDestination",
     "SettingStatus",
     "StaffRole",
