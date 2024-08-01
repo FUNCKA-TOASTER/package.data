@@ -61,8 +61,8 @@ class SettingDestination(Enum):
     system = "system"
 
 
-class UrlType(Enum):
-    """Description of url types.
+class LinkType(Enum):
+    """Description of link types.
 
     Attributes:
         domain
@@ -73,8 +73,8 @@ class UrlType(Enum):
     url = "url"
 
 
-class UrlStatus(Enum):
-    """Description of url status.
+class LinkStatus(Enum):
+    """Description of link status.
 
     Attributes:
         forbidden
