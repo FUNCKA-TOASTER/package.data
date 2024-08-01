@@ -8,7 +8,7 @@ About:
 """
 
 from datetime import datetime
-from toaster.database import BaseModel
+from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import Mapped, mapped_column
 from sqlalchemy.dialects.mysql import (
     TINYINT,
@@ -27,6 +27,9 @@ from toaster_utils.enums import (
     StaffRole,
 )
 from .annotations import UUID, BPID
+
+
+BaseModel = declarative_base()
 
 
 class Peer(BaseModel):
