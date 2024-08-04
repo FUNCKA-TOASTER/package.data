@@ -74,6 +74,13 @@ def get_user_warns(session: Session, uuid: int, bpid: int) -> Optional[WarnInfo]
 
 
 @script(auto_commit=False, debug=True)
+def set_user_warns(session: Session, uuid: int, bpid: int, points: int) -> None:
+    warn = session.get(Warn, {"bpid": bpid, "uuid": uuid})
+    warn.points = points if points <= 10 else 10
+    session.commit()
+
+
+@script(auto_commit=False, debug=True)
 def get_user_queue_status(session: Session, uuid: int, bpid: int) -> Optional[datetime]:
     queue = session.get(Queue, {"bpid": bpid, "uuid": uuid})
     return queue.expired if queue else None
