@@ -76,20 +76,29 @@ def get_user_warns(session: Session, uuid: int, bpid: int) -> Optional[WarnInfo]
 @script(auto_commit=False, debug=True)
 def set_user_warns(session: Session, uuid: int, bpid: int, points: int) -> None:
     warn = session.get(Warn, {"bpid": bpid, "uuid": uuid})
-    if points <= 0 or points >= 10:
-        session.delete(warn)
-    else:
-        zone = "_zone"
-        if points > 6:
-            zone = "red" + zone
-        elif points > 3:
-            zone = "yellow" + zone
+    if not warn:
+        if points <= 0 or points >= 10:
+            session.delete(warn)
         else:
-            zone = "green" + zone
+            zone = "_zone"
+            if points > 6:
+                zone = "red" + zone
+            elif points > 3:
+                zone = "yellow" + zone
+            else:
+                zone = "green" + zone
 
-        setting = session.get(Delay, {"bpid": bpid, "setting": zone})
-        warn.points = points
-        warn.expired = datetime.now() + timedelta(days=setting.delay)
+            setting = session.get(Delay, {"bpid": bpid, "setting": zone})
+            warn.points = points
+            warn.expired = datetime.now() + timedelta(days=setting.delay)
+    else:
+        new_warn = Warn(
+            bpid=bpid,
+            uuid=uuid,
+            points=points,
+            expired=datetime.now(),
+        )
+        session.add(new_warn)
 
     session.commit()
 
