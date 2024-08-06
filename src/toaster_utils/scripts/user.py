@@ -76,7 +76,7 @@ def get_user_warns(session: Session, uuid: int, bpid: int) -> Optional[WarnInfo]
 @script(auto_commit=False, debug=True)
 def set_user_warns(session: Session, uuid: int, bpid: int, points: int) -> None:
     warn = session.get(Warn, {"bpid": bpid, "uuid": uuid})
-    if points <= 0 or points > 10:
+    if points <= 0 or points >= 10:
         session.delete(warn)
     else:
         warn.points = points
