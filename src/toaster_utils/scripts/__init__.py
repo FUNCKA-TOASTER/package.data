@@ -20,6 +20,7 @@ from .user import (
     update_user_permission,
     drop_user_permission,
     get_user_warns,
+    set_user_warns,
     get_user_queue_status,
     insert_user_to_queue,
 )
@@ -75,4 +76,5 @@ __all__ = (
     "open_menu_session",
     "close_menu_session",
     "get_expired_sessions",
+    "set_user_warns",
 )
