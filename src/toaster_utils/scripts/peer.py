@@ -50,3 +50,9 @@ def drop_peer_mark(session: Session, bpid: int) -> None:
 def get_log_peers(session: Session) -> List[int]:
     peers = session.query(Peer).filter(Peer.mark == PeerMark.LOG).all()
     return [peer.id for peer in peers]
+
+
+@script(auto_commit=False, debug=True)
+def get_chat_peers(session: Session) -> List[int]:
+    peers = session.query(Peer).filter(Peer.mark == PeerMark.CHAT).all()
+    return [peer.id for peer in peers]

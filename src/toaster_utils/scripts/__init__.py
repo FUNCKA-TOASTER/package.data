@@ -13,6 +13,7 @@ from .peer import (
     drop_peer_mark,
     update_peer_data,
     get_log_peers,
+    get_chat_peers,
 )
 from .user import (
     get_user_permission,
@@ -73,6 +74,7 @@ __all__ = (
     "insert_cursed",
     "get_curse_words",
     "get_log_peers",
+    "get_chat_peers",
     "open_menu_session",
     "close_menu_session",
     "get_expired_sessions",
