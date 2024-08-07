@@ -70,7 +70,7 @@ class LinkType(Enum):
     """
 
     domain = "domain"
-    url = "url"
+    link = "link"
 
 
 class LinkStatus(Enum):
