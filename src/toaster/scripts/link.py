@@ -10,9 +10,9 @@ About:
 
 from typing import Set
 from sqlalchemy.orm import Session
-from toaster.database import script
-from toaster_utils.models import Link
-from toaster_utils.enums import LinkStatus, LinkType
+from funcka_bots.database import script
+from toaster.models import Link
+from toaster.enums import LinkStatus, LinkType
 
 
 @script(auto_commit=False, debug=True)

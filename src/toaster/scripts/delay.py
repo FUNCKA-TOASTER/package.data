@@ -10,8 +10,8 @@ About:
 
 from typing import Optional
 from sqlalchemy.orm import Session
-from toaster.database import script
-from toaster_utils.models import Delay
+from funcka_bots.database import script
+from toaster.models import Delay
 
 
 @script(auto_commit=False, debug=True)

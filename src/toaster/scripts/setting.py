@@ -10,9 +10,9 @@ About:
 
 from typing import Dict, Optional
 from sqlalchemy.orm import Session
-from toaster.database import script
-from toaster_utils.models import Setting
-from toaster_utils.enums import SettingDestination, SettingStatus
+from funcka_bots.database import script
+from toaster.models import Setting
+from toaster.enums import SettingDestination, SettingStatus
 
 
 @script(auto_commit=False, debug=True)

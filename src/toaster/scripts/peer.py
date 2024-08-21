@@ -10,9 +10,9 @@ About:
 
 from typing import Optional, List
 from sqlalchemy.orm import Session
-from toaster.database import script
-from toaster_utils.models import Peer
-from toaster_utils.enums import PeerMark
+from funcka_bots.database import script
+from toaster.models import Peer
+from toaster.enums import PeerMark
 
 
 @script(auto_commit=False, debug=True)

@@ -1,9 +1,9 @@
 [tool.poetry]
-name = "toaster-utils"
+name = "toaster"
 version = "0.1.3"
 description = "TOASTER bot local package."
-repository = "https://github.com/FUNCKA-TOASTER/package.toaster-utils"
-documentation = "https://github.com/FUNCKA-TOASTER/package.toaster-utils/wiki"
+repository = "https://github.com/FUNCKA-TOASTER/package.toaster"
+documentation = "https://github.com/FUNCKA-TOASTER/package.toaster/wiki"
 authors = [
     "Oidaho <oidahomain@gmail.com>"
 ]
@@ -14,7 +14,7 @@ readme = "README.md"
 python = "^3.10"
 sqlalchemy = "^2.0.31"
 pymysql = "^1.1.1"
-toaster = {git = "https://github.com/FUNCKA-TOASTER/package.toaster", branch="main"}
+funcka_bots = {git = "https://github.com/FUNCKA-STALCRAFT/package.funcka-bots", branch="main"}
 
 [tool.poetry.dev-dependencies]
 pytest = "^6.2.4"

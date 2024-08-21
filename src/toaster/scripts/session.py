@@ -10,13 +10,13 @@ About:
 
 from typing import List, Tuple
 from sqlalchemy.orm import Session
-from toaster.database import script
-from toaster_utils.models import (
+from funcka_bots.database import script
+from toaster.models import (
     Session as MenuSession,
     Delay,
     Peer,
 )
-from toaster_utils.enums import PeerMark
+from toaster.enums import PeerMark
 from datetime import datetime, timedelta
 
 

@@ -11,15 +11,15 @@ About:
 from typing import Tuple, Optional
 from datetime import datetime, timedelta
 from sqlalchemy.orm import Session
-from toaster.database import script
-from toaster_utils.models import (
+from funcka_bots.database import script
+from toaster.models import (
     Permission,
     Staff,
     Warn,
     Queue,
     Delay,
 )
-from toaster_utils.enums import StaffRole, UserPermission
+from toaster.enums import StaffRole, UserPermission
 
 
 WarnInfo = Tuple[int, datetime]

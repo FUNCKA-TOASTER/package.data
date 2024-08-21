@@ -17,7 +17,7 @@ from sqlalchemy.dialects.mysql import (
     VARCHAR,
     DATETIME,
 )
-from toaster_utils.enums import (
+from toaster.enums import (
     PeerMark,
     UserPermission,
     SettingDestination,

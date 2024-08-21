@@ -10,8 +10,8 @@ About:
 
 from typing import List
 from sqlalchemy.orm import Session
-from toaster.database import script
-from toaster_utils.models import Curse
+from funcka_bots.database import script
+from toaster.models import Curse
 
 
 @script(auto_commit=False, debug=True)
