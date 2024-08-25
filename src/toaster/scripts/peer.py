@@ -10,18 +10,18 @@ About:
 
 from typing import Optional, List
 from sqlalchemy.orm import Session
-from funcka_bots.database import script
 from toaster.models import Peer
 from toaster.enums import PeerMark
+from toaster import TOASTER
 
 
-@script(auto_commit=False, debug=True)
+@TOASTER.script(auto_commit=False, debug=True)
 def get_peer_mark(session: Session, bpid: int) -> Optional[PeerMark]:
     peer = session.get(Peer, {"id": bpid})
     return peer.mark if peer else None
 
 
-@script(auto_commit=False, debug=True)
+@TOASTER.script(auto_commit=False, debug=True)
 def set_peer_mark(session: Session, mark: PeerMark, bpid: int, name: str) -> None:
     new_peer = Peer(
         id=bpid,
@@ -32,27 +32,27 @@ def set_peer_mark(session: Session, mark: PeerMark, bpid: int, name: str) -> Non
     session.commit()
 
 
-@script(auto_commit=False, debug=True)
+@TOASTER.script(auto_commit=False, debug=True)
 def update_peer_data(session: Session, bpid: int, name: str) -> None:
     peer = session.get(Peer, {"id": bpid})
     peer.name = name
     session.commit()
 
 
-@script(auto_commit=False, debug=True)
+@TOASTER.script(auto_commit=False, debug=True)
 def drop_peer_mark(session: Session, bpid: int) -> None:
     peer = session.get(Peer, {"id": bpid})
     session.delete(peer)
     session.commit()
 
 
-@script(auto_commit=False, debug=True)
+@TOASTER.script(auto_commit=False, debug=True)
 def get_log_peers(session: Session) -> List[int]:
     peers = session.query(Peer).filter(Peer.mark == PeerMark.LOG).all()
     return [peer.id for peer in peers]
 
 
-@script(auto_commit=False, debug=True)
+@TOASTER.script(auto_commit=False, debug=True)
 def get_chat_peers(session: Session) -> List[int]:
     peers = session.query(Peer).filter(Peer.mark == PeerMark.CHAT).all()
     return [peer.id for peer in peers]

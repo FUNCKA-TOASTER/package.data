@@ -10,7 +10,6 @@ About:
 
 from typing import List, Tuple
 from sqlalchemy.orm import Session
-from funcka_bots.database import script
 from toaster.models import (
     Session as MenuSession,
     Delay,
@@ -18,12 +17,13 @@ from toaster.models import (
 )
 from toaster.enums import PeerMark
 from datetime import datetime, timedelta
+from toaster import TOASTER
 
 
 ExpiredSessions = List[Tuple[int, List[int]]]
 
 
-@script(auto_commit=False, debug=True)
+@TOASTER.script(auto_commit=False, debug=True)
 def open_menu_session(session: Session, bpid: int, cmid: int) -> None:
     setting = session.get(Delay, {"bpid": bpid, "setting": "menu_session"})
     delay = setting.delay if setting else 0
@@ -33,14 +33,14 @@ def open_menu_session(session: Session, bpid: int, cmid: int) -> None:
     session.commit()
 
 
-@script(auto_commit=False, debug=True)
+@TOASTER.script(auto_commit=False, debug=True)
 def close_menu_session(session: Session, bpid: int, cmid: int) -> None:
     menu_session = session.get(MenuSession, {"bpid": bpid, "cmid": cmid})
     session.delete(menu_session)
     session.commit()
 
 
-@script(auto_commit=False, debug=True)
+@TOASTER.script(auto_commit=False, debug=True)
 def get_expired_sessions(session: Session) -> ExpiredSessions:
     result = []
     peers = session.query(Peer).filter(Peer.mark == PeerMark.CHAT).all()

@@ -10,12 +10,12 @@ About:
 
 from typing import Set
 from sqlalchemy.orm import Session
-from funcka_bots.database import script
 from toaster.models import Link
 from toaster.enums import LinkStatus, LinkType
+from toaster import TOASTER
 
 
-@script(auto_commit=False, debug=True)
+@TOASTER.script(auto_commit=False, debug=True)
 def insert_pattern(
     session: Session, bpid: int, type: LinkType, status: LinkStatus, pattern: str
 ) -> None:
@@ -24,7 +24,7 @@ def insert_pattern(
     session.commit()
 
 
-@script(auto_commit=False, debug=True)
+@TOASTER.script(auto_commit=False, debug=True)
 def get_patterns(
     session: Session, bpid: int, type: LinkType, status: LinkStatus
 ) -> Set[str]:
