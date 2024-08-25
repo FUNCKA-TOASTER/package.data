@@ -14,9 +14,8 @@ from enum import Enum
 class PeerMark(Enum):
     """Description of peer mark types.
 
-    Attributes:
-        CHAT
-        LOG
+    :param CHAT: Value `str`(`CHAT`)
+    :param LOG: Value `str`(`LOG`)
     """
 
     CHAT = "CHAT"
@@ -26,10 +25,9 @@ class PeerMark(Enum):
 class UserPermission(Enum):
     """Description of user access lvls.
 
-    Attributes:
-        user
-        moderator
-        administrator
+    :param user: Value `int`(`0`)
+    :param moderator: Value `int`(`1`)
+    :param administrator: Value `int`(`2`)
     """
 
     user = 0
@@ -40,9 +38,8 @@ class UserPermission(Enum):
 class SettingStatus(Enum):
     """Description of setting status.
 
-    Attributes:
-        active
-        inactive
+    :param inactive: Value `bool`(`False`)
+    :param active: Value `bool`(`True`)
     """
 
     inactive = False
@@ -52,9 +49,8 @@ class SettingStatus(Enum):
 class SettingDestination(Enum):
     """Description of setting destinations.
 
-    Attributes:
-        filter
-        system
+    :param filter: Value `str`(`filter`)
+    :param system: Value `str`(`system`)
     """
 
     filter = "filter"
@@ -64,9 +60,8 @@ class SettingDestination(Enum):
 class LinkType(Enum):
     """Description of link types.
 
-    Attributes:
-        domain
-        url
+    :param domain: Value `str`(`domain`)
+    :param url: Value `str`(`link`)
     """
 
     domain = "domain"
@@ -76,9 +71,8 @@ class LinkType(Enum):
 class LinkStatus(Enum):
     """Description of link status.
 
-    Attributes:
-        forbidden
-        allowed
+    :param forbidden: Value `str`(`forbidden`)
+    :param allowed: Value `str`(`allowed`)
     """
 
     forbidden = "forbidden"
@@ -88,12 +82,12 @@ class LinkStatus(Enum):
 class StaffRole(Enum):
     """Description of user staff roles.
 
-    Attributes:
-        ADM
-        TECH
-        SYS
+    :param ADM: Value `str`(`ADM`)
+    :param TECH: Value `str`(`TECH`)
+    :param SYS: Value `str`(`SYS`)
     """
 
-    ADM = "ADM"
     TECH = "TECH"
+    # Below are the legacy attributes
+    ADM = "ADM"
     SYS = "SYS"

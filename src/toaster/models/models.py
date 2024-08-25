@@ -34,10 +34,9 @@ BaseModel = declarative_base()
 class Peer(BaseModel):
     """Peer SQLA model
 
-    Columns:
-        id
-        name
-        mark
+    :param BIGINT id: Peer ID.
+    :param VARCHAR(255) name: The name of the peer.
+    :param PeerMark mark: Peer mark.
     """
 
     __tablename__ = "peers"
@@ -50,10 +49,9 @@ class Peer(BaseModel):
 class Permission(BaseModel):
     """Permission SQLA model
 
-    Columns:
-        bpid
-        uuid
-        permission
+    :param BPID bpid: Bot peer ID.
+    :param UUID uuid: Unique user ID.
+    :param UserPermission permission: User permission.
     """
 
     __tablename__ = "permissions"
@@ -66,11 +64,10 @@ class Permission(BaseModel):
 class Warn(BaseModel):
     """Warn SQLA model
 
-    Columns:
-        bpid
-        uuid
-        points
-        expired
+    :param BPID bpid: Bot peer ID.
+    :param UUID uuid: Unique user ID.
+    :param TINYINT(10) points: User warn points.
+    :param DATETIME expired: Expiration date of warn points.
     """
 
     __tablename__ = "warns"
@@ -84,10 +81,9 @@ class Warn(BaseModel):
 class Session(BaseModel):
     """Session SQLA model
 
-    Columns:
-        bpid
-        cmid
-        expired
+    :param BPID bpid: Bot peer ID.
+    :param BIGINT cmid: Conversation message ID.
+    :param DATETIME expired: Expiration date of session.
     """
 
     __tablename__ = "sessions"
@@ -100,10 +96,9 @@ class Session(BaseModel):
 class Queue(BaseModel):
     """Queue SQLA model
 
-    Columns:
-        bpid
-        uuid
-        expired
+    :param BPID bpid: Bot peer ID.
+    :param UUID uuid: Unique user ID.
+    :param DATETIME expired: Expiration date of record.
     """
 
     __tablename__ = "queue"
@@ -117,12 +112,11 @@ class Queue(BaseModel):
 class Setting(BaseModel):
     """Setting SQLA model
 
-    Columns:
-        bpid
-        name
-        status
-        destination
-        points
+    :param BPID bpid: Bot peer ID.
+    :param VARCHAR(30) name: Setting name.
+    :param SettingStatus status: Setting status.
+    :param SettingDestination destination: setting destination.
+    :param TINYINT(10) points: Warn points for violation.
     """
 
     __tablename__ = "settings"
@@ -137,9 +131,8 @@ class Setting(BaseModel):
 class Curse(BaseModel):
     """Cursed SQLA model
 
-    Columns:
-        bpid
-        word
+    :param BPID bpid: Bot peer ID.
+    :param VARCHAR(40) word: Cursed word.
     """
 
     __tablename__ = "cursed"
@@ -151,10 +144,9 @@ class Curse(BaseModel):
 class Delay(BaseModel):
     """Delay SQLA model
 
-    Columns:
-        bpid
-        setting
-        delay
+    :param BPID bpid: Bot peer ID.
+    :param VARCHAR(30) setting: Setting name.
+    :param INTEGER delay: Time interval for this setting.
     """
 
     __tablename__ = "delays"
@@ -167,11 +159,10 @@ class Delay(BaseModel):
 class Link(BaseModel):
     """Link SQLA model
 
-    Columns:
-        bpid
-        type
-        pattern
-        status
+    :param BPID bpid: Bot peer ID.
+    :param LinkType type: Link pattern type.
+    :param VARCHAR(255) pattern: Link pattern.
+    :param LinkStatus status: Link pattern status.
     """
 
     __tablename__ = "links"
@@ -185,9 +176,8 @@ class Link(BaseModel):
 class Staff(BaseModel):
     """Staff SQLA model
 
-    Columns:
-        uuid
-        role
+    :param UUID uuid: Unique user ID.
+    :param StaffRole role: User role.
     """
 
     __tablename__ = "staff"
