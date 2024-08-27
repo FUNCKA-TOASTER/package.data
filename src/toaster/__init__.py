@@ -8,5 +8,6 @@ About:
 """
 
 from .db_instances import TOASTER
+from .broker_instances import broker
 
-__all__ = ("TOASTER",)
+__all__ = ("TOASTER", "broker")
