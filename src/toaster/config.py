@@ -19,10 +19,17 @@ SQL_ALCHEMY_CREDS = AlchemyCredentials(
 )
 
 
-BROKER_CREDENTIALS = RabbitMQCredentials(
-    host=os.getenv("rabbitmq_host"),
-    port=os.getenv("rabbitmq_port"),
-    vhost=os.getenv("rabbitmq_vhost"),
-    user=os.getenv("rabbitmq_user"),
-    pswd=os.getenv("rabbitmq_pswd"),
-)
+rabbit_env_vars = {
+    key for key, value in os.environ.items() if key.startswith("rabbitmq")
+}
+if rabbit_env_vars:
+    BROKER_CREDENTIALS = RabbitMQCredentials(
+        host=os.getenv("rabbitmq_host"),
+        port=os.getenv("rabbitmq_port"),
+        vhost=os.getenv("rabbitmq_vhost"),
+        user=os.getenv("rabbitmq_user"),
+        pswd=os.getenv("rabbitmq_pswd"),
+    )
+
+else:
+    BROKER_CREDENTIALS = None
